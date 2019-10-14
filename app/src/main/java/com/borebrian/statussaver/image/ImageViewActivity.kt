@@ -44,6 +44,8 @@ class ImageViewActivity : AppCompatActivity() {
      val ADMOB_APP_ID = "ca-app-pub-3940256099942544~3347511713"
     var currentNativeAd: UnifiedNativeAd? = null
 
+
+
     private var mScaleGestureDetector: ScaleGestureDetector? = null
     private var mScaleFactor = 1.0f
 
@@ -55,26 +57,22 @@ class ImageViewActivity : AppCompatActivity() {
         mInterstitialAd.adUnitId = "ca-app-pub-3940256099942544/1033173712";
         mInterstitialAd.loadAd(AdRequest.Builder().build());
 
-         //ADVIEW
+         //ADVIEW   BANNER
         MobileAds.initialize(this, "ca-app-pub-3940256099942544~3347511713")
         MobileAds.initialize(this,"ca-app-pub-3940256099942544~3347511713");
 
 
 
-        //NATIVE ADVSS
+        //NATIVE ADS
         // Initialize the Mobile Ads SDK.
         MobileAds.initialize(this, ADMOB_APP_ID)
+        refreshAd()
+
 
       /*  refresh_button.setOnClickListener { refreshAd() }
 */
-        refreshAd()
 
-        
 
-       /* val adView = findViewById(R.id.adVieww) as NativeExpressAdView
-        adView.loadAd(AdRequest.Builder().build())*/
-
-        
 
 
 
