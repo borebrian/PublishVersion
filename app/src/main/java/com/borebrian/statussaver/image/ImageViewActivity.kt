@@ -68,7 +68,7 @@ class ImageViewActivity : AppCompatActivity() {
         //NATIVE ADS
         // Initialize the Mobile Ads SDK.
         MobileAds.initialize(this, ADMOB_APP_ID)
-        refreshAd()
+        
 
 
       /*  refresh_button.setOnClickListener { refreshAd() }

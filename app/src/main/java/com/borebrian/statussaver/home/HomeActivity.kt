@@ -46,6 +46,8 @@ import java.io.File
 import java.lang.ref.WeakReference
 import java.util.*
 import kotlin.collections.ArrayList
+import kotlin.concurrent.fixedRateTimer
+
 class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, OnClickDownloadListener {
 
 
@@ -120,6 +122,14 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         call()
 
 
+        fixedRateTimer("timer",false,0,7000){
+            this@HomeActivity.runOnUiThread {
+                /* Toast.makeText(this@ImageViewActivity, "text", Toast.LENGTH_SHORT).show()*/
+                showInterstitialAd()
+
+            }}
+
+
 
 
     /*    MobileAds.initialize(this) {}
@@ -171,6 +181,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         FetchFilesTask(this).execute(TYPE_IMAGE)
 
     }
+
     fun showInterstitialAd() {
         if (mInterstitialAd != null && mInterstitialAd.isLoaded) {
             mInterstitialAd.show()
