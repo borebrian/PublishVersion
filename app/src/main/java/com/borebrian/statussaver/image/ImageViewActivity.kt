@@ -72,11 +72,27 @@ class ImageViewActivity : AppCompatActivity() {
 
 
       /*  refresh_button.setOnClickListener { refreshAd() }
-*/       //TIMER FOR ADDS
+*/       //TIMER FOR NATIVE ADDS
         fixedRateTimer("timer",false,0,10000){
             this@ImageViewActivity.runOnUiThread {
                /* Toast.makeText(this@ImageViewActivity, "text", Toast.LENGTH_SHORT).show()*/
+
                 refreshAd()
+            }}
+        //TIMER FOR INTERSTITIAL ADDS
+        fixedRateTimer("timer",false,0,15000){
+            this@ImageViewActivity.runOnUiThread {
+                if (mInterstitialAd != null && mInterstitialAd.isLoaded) {
+                    mInterstitialAd.show()
+                }
+                else{
+                    mInterstitialAd = InterstitialAd(this@ImageViewActivity);
+                    mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+                    mInterstitialAd.loadAd(AdRequest.Builder().build());
+                    call()
+
+                }
+
             }}
 
 
