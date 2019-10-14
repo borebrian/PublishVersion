@@ -56,7 +56,8 @@ class ImageViewActivity : AppCompatActivity() {
         setContentView(R.layout.activity_image_view)
         setSupportActionBar(toolbar)
         mInterstitialAd = InterstitialAd(this)
-        mInterstitialAd.adUnitId = "ca-app-pub-3940256099942544/1033173712";
+        mInterstitialAd.adUnitId = "ca-app-pub-5747999756430076/4516345803";
+        
         mInterstitialAd.loadAd(AdRequest.Builder().build());
 
          //ADVIEW   BANNER
@@ -87,7 +88,7 @@ class ImageViewActivity : AppCompatActivity() {
                 }
                 else{
                     mInterstitialAd = InterstitialAd(this@ImageViewActivity);
-                    mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+                    mInterstitialAd.setAdUnitId("ca-app-pub-5747999756430076/4516345803");
                     mInterstitialAd.loadAd(AdRequest.Builder().build());
                     call()
 
@@ -400,7 +401,7 @@ class ImageViewActivity : AppCompatActivity() {
     fun showAdd(){
         /* if (mInterstitialAd.isLoaded()) {*/
         mInterstitialAd = InterstitialAd(this);
-        mInterstitialAd.adUnitId = "ca-app-pub-3940256099942544/1033173712";
+        mInterstitialAd.adUnitId = "ca-app-pub-5747999756430076/4516345803";
         mInterstitialAd.loadAd(AdRequest.Builder().build());
         mInterstitialAd.show()
 
@@ -408,7 +409,7 @@ class ImageViewActivity : AppCompatActivity() {
          else{*/
         /*  Toast.makeText(this,"Not loaded",Toast.LENGTH_LONG).show()
           mInterstitialAd = InterstitialAd(this);
-          mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+          mInterstitialAd.setAdUnitId("ca-app-pub-5747999756430076/4516345803");
           mInterstitialAd.loadAd(AdRequest.Builder().build());
           mInterstitialAd.show()*/
 
@@ -421,7 +422,7 @@ class ImageViewActivity : AppCompatActivity() {
         }
     else{
             mInterstitialAd = InterstitialAd(this);
-            mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+            mInterstitialAd.setAdUnitId("ca-app-pub-5747999756430076/4516345803");
             mInterstitialAd.loadAd(AdRequest.Builder().build());
             call()
 
