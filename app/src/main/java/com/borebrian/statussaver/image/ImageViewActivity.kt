@@ -39,7 +39,7 @@ class ImageViewActivity : AppCompatActivity() {
     private lateinit var mRewardedVideoAd: RewardedVideoAd
 
 
-    
+     //NATIVE IDS
      val ADMOB_AD_UNIT_ID = "ca-app-pub-3940256099942544/2247696110"
      val ADMOB_APP_ID = "ca-app-pub-3940256099942544~3347511713"
     var currentNativeAd: UnifiedNativeAd? = null
