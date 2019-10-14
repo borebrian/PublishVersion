@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">Status Pro</string>
 
-    <string name="admob_app_id">ca-app-pub-7794898756697161~7784506316</string>
-    <string name="admob_interstitial_id">ca-app-pub-7794898756697161/6182283050</string>
-    <string name="admob_banner_id">ca-app-pub-7794898756697161/8981095967</string>
+    <string name="admob_app_id">ca-app-pub-5747999756430076~3231184290</string>
+    <string name="admob_interstitial_id">ca-app-pub-5747999756430076/4516345803</string>
+    <string name="admob_banner_id">ca-app-pub-5747999756430076/3997471059</string>
 
 
     <string name="title_home">Home</string>

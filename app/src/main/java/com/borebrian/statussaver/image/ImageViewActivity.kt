@@ -42,8 +42,8 @@ class ImageViewActivity : AppCompatActivity() {
 
 
      //NATIVE IDS
-     val ADMOB_AD_UNIT_ID = "ca-app-pub-3940256099942544/2247696110"
-     val ADMOB_APP_ID = "ca-app-pub-3940256099942544~3347511713"
+     val ADMOB_AD_UNIT_ID = "ca-app-pub-5747999756430076/5637855788"
+     val ADMOB_APP_ID = "ca-app-pub-5747999756430076~3231184290"
     var currentNativeAd: UnifiedNativeAd? = null
 
 
@@ -57,12 +57,12 @@ class ImageViewActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         mInterstitialAd = InterstitialAd(this)
         mInterstitialAd.adUnitId = "ca-app-pub-5747999756430076/4516345803";
+
         
         mInterstitialAd.loadAd(AdRequest.Builder().build());
 
          //ADVIEW   BANNER
-        MobileAds.initialize(this, "ca-app-pub-3940256099942544~3347511713")
-        MobileAds.initialize(this,"ca-app-pub-3940256099942544~3347511713");
+        MobileAds.initialize(this, "ca-app-pub-5747999756430076/3997471059")
 
 
 

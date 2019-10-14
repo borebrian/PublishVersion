@@ -13,6 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-5747999756430076~3231184290"/>
         <activity
             android:name="com.borebrian.statussaver.home.HomeActivity"
             android:label="@string/app_name"
