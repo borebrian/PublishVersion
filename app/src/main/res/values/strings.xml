@@ -17,6 +17,8 @@
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle"> Save Viewed WhatsApp Status </string>
     <string name="top_bar_text"> Status pro \n Developer:Bore Brian</string>
+    <string name="admob_app_id1">ca-app-pub-3940256099942544~3347511713</string>
+    <string name="ad_unit_id">ca-app-pub-3940256099942544/8135179316</string>
 
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
