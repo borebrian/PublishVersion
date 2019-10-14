@@ -19,6 +19,7 @@ import android.app.WallpaperManager
 import android.content.Context
 
 import android.net.Uri
+import android.os.Handler
 import android.support.v7.app.AlertDialog
 import android.widget.*
 import com.borebrian.statussaver.home.HomeActivity
@@ -29,6 +30,7 @@ import com.google.android.gms.ads.formats.UnifiedNativeAd
 import com.google.android.gms.ads.formats.UnifiedNativeAdView
 import com.google.android.gms.ads.reward.RewardedVideoAd
 import java.util.*
+import kotlin.concurrent.fixedRateTimer
 
 
 class ImageViewActivity : AppCompatActivity() {
@@ -70,8 +72,12 @@ class ImageViewActivity : AppCompatActivity() {
 
 
       /*  refresh_button.setOnClickListener { refreshAd() }
-*/
-
+*/       //TIMER FOR ADDS
+        fixedRateTimer("timer",false,0,10000){
+            this@ImageViewActivity.runOnUiThread {
+               /* Toast.makeText(this@ImageViewActivity, "text", Toast.LENGTH_SHORT).show()*/
+                refreshAd()
+            }}
 
 
 
@@ -225,6 +231,8 @@ class ImageViewActivity : AppCompatActivity() {
         }
 
     }
+    
+
     private fun populateUnifiedNativeAdView(nativeAd: UnifiedNativeAd, adView: UnifiedNativeAdView) {
         // You must call destroy on old ads when you are done with them,
         // otherwise you will have a memory leak.
