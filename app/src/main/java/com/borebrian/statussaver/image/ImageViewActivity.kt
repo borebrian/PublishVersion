@@ -42,8 +42,8 @@ class ImageViewActivity : AppCompatActivity() {
 
 
      //NATIVE IDS
-     val ADMOB_AD_UNIT_ID = "ca-app-pub-5747999756430076/5637855788"
-     val ADMOB_APP_ID = "ca-app-pub-5747999756430076~3231184290"
+    val ADMOB_AD_UNIT_ID = "ca-app-pub-3940256099942544/2247696110"
+    val ADMOB_APP_ID = "ca-app-pub-3940256099942544~3347511713"
     var currentNativeAd: UnifiedNativeAd? = null
 
 
@@ -56,7 +56,7 @@ class ImageViewActivity : AppCompatActivity() {
         setContentView(R.layout.activity_image_view)
         setSupportActionBar(toolbar)
         mInterstitialAd = InterstitialAd(this)
-        mInterstitialAd.adUnitId = "ca-app-pub-5747999756430076/4516345803";
+        mInterstitialAd.adUnitId = "ca-app-pub-3940256099942544/1033173712";
 
         
         mInterstitialAd.loadAd(AdRequest.Builder().build());
@@ -88,7 +88,7 @@ class ImageViewActivity : AppCompatActivity() {
                 }
                 else{
                     mInterstitialAd = InterstitialAd(this@ImageViewActivity);
-                    mInterstitialAd.setAdUnitId("ca-app-pub-5747999756430076/4516345803");
+                    mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
                     mInterstitialAd.loadAd(AdRequest.Builder().build());
                     call()
 
@@ -383,7 +383,7 @@ class ImageViewActivity : AppCompatActivity() {
         val adLoader = builder.withAdListener(object : AdListener() {
             override fun onAdFailedToLoad(errorCode: Int) {
                 /*refresh_button.isEnabled = true*/
-                Toast.makeText(this@ImageViewActivity, "Failed to load native ad: " + errorCode, Toast.LENGTH_SHORT).show()
+               /* Toast.makeText(this@ImageViewActivity, "" + errorCode, Toast.LENGTH_SHORT).show()*/
             }
         }).build()
 
@@ -401,7 +401,7 @@ class ImageViewActivity : AppCompatActivity() {
     fun showAdd(){
         /* if (mInterstitialAd.isLoaded()) {*/
         mInterstitialAd = InterstitialAd(this);
-        mInterstitialAd.adUnitId = "ca-app-pub-5747999756430076/4516345803";
+        mInterstitialAd.adUnitId = "ca-app-pub-3940256099942544/1033173712";
         mInterstitialAd.loadAd(AdRequest.Builder().build());
         mInterstitialAd.show()
 
@@ -409,7 +409,7 @@ class ImageViewActivity : AppCompatActivity() {
          else{*/
         /*  Toast.makeText(this,"Not loaded",Toast.LENGTH_LONG).show()
           mInterstitialAd = InterstitialAd(this);
-          mInterstitialAd.setAdUnitId("ca-app-pub-5747999756430076/4516345803");
+          mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
           mInterstitialAd.loadAd(AdRequest.Builder().build());
           mInterstitialAd.show()*/
 
@@ -422,7 +422,7 @@ class ImageViewActivity : AppCompatActivity() {
         }
     else{
             mInterstitialAd = InterstitialAd(this);
-            mInterstitialAd.setAdUnitId("ca-app-pub-5747999756430076/4516345803");
+            mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
             mInterstitialAd.loadAd(AdRequest.Builder().build());
             call()
 
