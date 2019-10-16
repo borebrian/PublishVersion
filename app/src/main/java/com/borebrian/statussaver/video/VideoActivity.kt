@@ -98,6 +98,12 @@ class VideoActivity : AppCompatActivity(), Player.EventListener {
         val imageFile = File(intent.getStringExtra("path"))
         var statusvideo=0;
         var status2video:Int
+        fixedRateTimer("timer",false,5000,5000){
+            this@VideoActivity.runOnUiThread {
+                /* Toast.makeText(this@ImageViewActivity, "text", Toast.LENGTH_SHORT).show()*/
+
+                refreshAd1()
+            }}
 
         fabsharevideo.setOnClickListener(){
             showInterstitialAd()
@@ -327,22 +333,7 @@ class VideoActivity : AppCompatActivity(), Player.EventListener {
 
         }
 
-        fixedRateTimer("timer",false,5000,5000){
-            this@VideoActivity.runOnUiThread {
-                /* Toast.makeText(this@ImageViewActivity, "text", Toast.LENGTH_SHORT).show()*/
 
-                refreshAd1()
-            }}
-
-        /*   val videoOptions = VideoOptions.Builder()
-                   .setStartMuted(start_muted_checkbox.isChecked)
-                   .build()
-   */
-        /*    val adOptions = NativeAdOptions.Builder()
-                    .setVideoOptions(videoOptions)
-                    .build()*/
-
-        /* builder.withNativeAdOptions(adOptions)*/
 
         val adLoader = builder.withAdListener(object : AdListener() {
             override fun onAdFailedToLoad(errorCode: Int) {
