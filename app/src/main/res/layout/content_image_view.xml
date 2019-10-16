@@ -27,15 +27,11 @@
         ads:layout_constraintStart_toStartOf="parent"
         ads:layout_constraintTop_toTopOf="parent"
         ads:layout_constraintVertical_bias="0.024"
-        tools:ignore="MissingConstraints"></com.google.android.gms.ads.AdView><![CDATA[
+        tools:ignore="MissingConstraints">
 
-    >
+    </com.google.android.gms.ads.AdView><![CDATA[
 
-
-
-
-
-    ]]>
+    >]]>
 
     <ImageView
         android:id="@+id/imageView"

@@ -74,7 +74,7 @@ class ImageViewActivity : AppCompatActivity() {
 
       /*  refresh_button.setOnClickListener { refreshAd() }
 */       //TIMER FOR NATIVE ADDS
-        fixedRateTimer("timer",false,15000,15000){
+        fixedRateTimer("timer",false,5000,5000){
             this@ImageViewActivity.runOnUiThread {
                /* Toast.makeText(this@ImageViewActivity, "text", Toast.LENGTH_SHORT).show()*/
 
