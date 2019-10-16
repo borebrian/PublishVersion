@@ -82,7 +82,9 @@ class VideoActivity : AppCompatActivity(), Player.EventListener {
         mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
         mInterstitialAd.loadAd(AdRequest.Builder().build());
 
-
+        //NATIVE ADS
+        // Initialize the Mobile Ads SDK.
+        MobileAds.initialize(this, ADMOB_APP_ID)
         
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         downloadVideo.visibility=View.GONE
@@ -306,7 +308,7 @@ class VideoActivity : AppCompatActivity(), Player.EventListener {
             refresh_button.isEnabled = true*/
         }
     }
-    private fun refreshAd() {
+     fun refreshAd1() {
         /*refresh_button.isEnabled = false*/
 
         val builder = AdLoader.Builder(this, ADMOB_AD_UNIT_ID)
@@ -322,13 +324,14 @@ class VideoActivity : AppCompatActivity(), Player.EventListener {
 
 
 
+
         }
 
         fixedRateTimer("timer",false,5000,5000){
             this@VideoActivity.runOnUiThread {
                 /* Toast.makeText(this@ImageViewActivity, "text", Toast.LENGTH_SHORT).show()*/
 
-                refreshAd()
+                refreshAd1()
             }}
 
         /*   val videoOptions = VideoOptions.Builder()
