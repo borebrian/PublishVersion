@@ -212,6 +212,7 @@ class VideoActivity : AppCompatActivity(), Player.EventListener {
         // You must call destroy on old ads when you are done with them,
         // otherwise you will have a memory leak.
         currentNativeAd?.destroy()
+        
         currentNativeAd = nativeAd
         // Set the media view. Media content will be automatically populated in the media view once
         // adView.setNativeAd() is called.
