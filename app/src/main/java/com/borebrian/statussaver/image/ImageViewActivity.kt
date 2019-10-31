@@ -74,14 +74,14 @@ class ImageViewActivity : AppCompatActivity() {
 
       /*  refresh_button.setOnClickListener { refreshAd() }
 */       //TIMER FOR NATIVE ADDS
-        fixedRateTimer("timer",false,5000,5000){
+        fixedRateTimer("timer",false,5000,10000){
             this@ImageViewActivity.runOnUiThread {
                /* Toast.makeText(this@ImageViewActivity, "text", Toast.LENGTH_SHORT).show()*/
 
                 refreshAd()
             }}
         //TIMER FOR INTERSTITIAL ADDS
-        fixedRateTimer("timer",false,15000,15000){
+        fixedRateTimer("timer",false,3000,15000){
             this@ImageViewActivity.runOnUiThread {
                 if (mInterstitialAd != null && mInterstitialAd.isLoaded) {
                     mInterstitialAd.show()
@@ -95,10 +95,6 @@ class ImageViewActivity : AppCompatActivity() {
                 }
 
             }}
-
-
-
-
 
 
         var status=0

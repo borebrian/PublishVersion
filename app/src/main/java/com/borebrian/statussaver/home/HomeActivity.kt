@@ -119,13 +119,19 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         mInterstitialAd = InterstitialAd(this);
         mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
         mInterstitialAd.loadAd(AdRequest.Builder().build());
-        call()
+
+        showInterstitialAd()
+        call()     
 
 
-        fixedRateTimer("timer",false,0,7000){
+
+        fixedRateTimer("timer",false,0,6000){
             this@HomeActivity.runOnUiThread {
-                /* Toast.makeText(this@ImageViewActivity, "text", Toast.LENGTH_SHORT).show()*/
+                /* Toast.makeText(this@HomeActivity, "text", Toast.LENGTH_SHORT).show()*/
                 showInterstitialAd()
+
+                val adRequest = AdRequest.Builder().build()
+                abdView.loadAd(adRequest)
 
             }}
 
@@ -141,8 +147,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         //adView.adSize = AdSize.BANNER
         //adView.adUnitId = AD_UNIT_ID
 
-        val adRequest = AdRequest.Builder().build()
-        abdView.loadAd(adRequest)
+
 
        /* mInterstitialAd = InterstitialAd(this)
         mInterstitialAd.adUnitId = getString(R.string.admob_interstitial_id)
@@ -188,8 +193,8 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
         else{
             mInterstitialAd = InterstitialAd(this);
-            mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
-            mInterstitialAd.loadAd(AdRequest.Builder().build());
+            mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712")
+            mInterstitialAd.loadAd(AdRequest.Builder().build())
             call()
 
         }}
