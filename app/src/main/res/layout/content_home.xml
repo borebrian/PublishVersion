@@ -11,8 +11,8 @@
 
     <com.google.android.gms.ads.AdView
         android:id="@+id/abdView"
-        android:layout_width="409dp"
-        android:layout_height="54dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginEnd="8dp"
@@ -21,22 +21,23 @@
         app:adUnitId="ca-app-pub-3940256099942544/6300978111"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
+        android:elevation="5dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.852"
+        app:layout_constraintVertical_bias="0.888"
         tools:ignore="MissingConstraints"></com.google.android.gms.ads.AdView>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/statusRcV"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="404dp"
+        android:layout_height="525dp"
         app:layout_constraintBottom_toTopOf="@+id/navigation"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
 
-        app:layout_constraintVertical_bias="1.0" />
+        />
 
 
     <android.support.design.widget.BottomNavigationView

@@ -90,7 +90,7 @@ class VideoActivity : AppCompatActivity(), Player.EventListener {
         downloadVideo.visibility=View.GONE
         deleteVideo.visibility=View.GONE
         shareVideo.visibility=View.GONE
-        showInterstitialAd()
+
 
         val adRequest = AdRequest.Builder().build()
         addV.loadAd(adRequest)

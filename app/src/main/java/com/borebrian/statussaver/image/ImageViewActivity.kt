@@ -59,7 +59,7 @@ class ImageViewActivity : AppCompatActivity() {
         mInterstitialAd.adUnitId = "ca-app-pub-3940256099942544/6300978111";
 
         
-        mInterstitialAd.loadAd(AdRequest.Builder().build());
+     /*   mInterstitialAd.loadAd(AdRequest.Builder().build());*/
 
          //ADVIEW   BANNER
         MobileAds.initialize(this, "ca-app-pub-3940256099942544/1033173712")
@@ -81,7 +81,7 @@ class ImageViewActivity : AppCompatActivity() {
                 refreshAd()
             }}
         //TIMER FOR INTERSTITIAL ADDS
-        fixedRateTimer("timer",false,3000,15000){
+      /*  fixedRateTimer("timer",false,3000,15000){
             this@ImageViewActivity.runOnUiThread {
                 if (mInterstitialAd != null && mInterstitialAd.isLoaded) {
                     mInterstitialAd.show()
@@ -95,11 +95,11 @@ class ImageViewActivity : AppCompatActivity() {
                 }
 
             }}
-
+*/
 
         var status=0
-        showInterstitialAd()
-
+      /*  showInterstitialAd()
+*/
 
 
         // Interstitial
