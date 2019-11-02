@@ -127,12 +127,8 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
 for(i in 1..2) {
-     mInterstitialAd = InterstitialAd(this);
-       mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
-       mInterstitialAd.loadAd(AdRequest.Builder().build());
+    showInterstitialAd()
        call()
-
-
     val adRequest = AdRequest.Builder().build()
     abdView.loadAd(adRequest)
 }
@@ -144,8 +140,11 @@ for(i in 1..2) {
             this@HomeActivity.runOnUiThread {
                 for(i in 1..2) {
                     mInterstitialAd = InterstitialAd(this@HomeActivity);
-                    mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+                    mInterstitialAd.adUnitId = "ca-app-pub-3940256099942544/1033173712";
+                    mInterstitialAd.loadAd(AdRequest.Builder().build());  mInterstitialAd = InterstitialAd(this@HomeActivity);
+                    mInterstitialAd.adUnitId = "ca-app-pub-3940256099942544/1033173712";
                     mInterstitialAd.loadAd(AdRequest.Builder().build());
+                    showInterstitialAd()
                     call()
 
 
