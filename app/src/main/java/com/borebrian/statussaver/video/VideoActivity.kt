@@ -98,12 +98,12 @@ class VideoActivity : AppCompatActivity(), Player.EventListener {
         val imageFile = File(intent.getStringExtra("path"))
         var statusvideo=0;
         var status2video:Int
-        fixedRateTimer("timer",false,5000,5000){
+      /*  fixedRateTimer("timer",false,0,5000){
             this@VideoActivity.runOnUiThread {
-                /* Toast.makeText(this@ImageViewActivity, "text", Toast.LENGTH_SHORT).show()*/
+                *//* Toast.makeText(this@ImageViewActivity, "text", Toast.LENGTH_SHORT).show()*//*
 
-                refreshAd1()
-            }}
+               *//* refreshAd1()*//*
+            }}*/
 
         fabsharevideo.setOnClickListener(){
             showInterstitialAd()
@@ -314,8 +314,8 @@ class VideoActivity : AppCompatActivity(), Player.EventListener {
             refresh_button.isEnabled = true*/
         }
     }
-     fun refreshAd1() {
-        /*refresh_button.isEnabled = false*/
+    /* fun refreshAd1() {
+        *//*refresh_button.isEnabled = false*//*
 
         val builder = AdLoader.Builder(this, ADMOB_AD_UNIT_ID)
 
@@ -337,15 +337,15 @@ class VideoActivity : AppCompatActivity(), Player.EventListener {
 
         val adLoader = builder.withAdListener(object : AdListener() {
             override fun onAdFailedToLoad(errorCode: Int) {
-                /*refresh_button.isEnabled = true*/
-                /* Toast.makeText(this@ImageViewActivity, "" + errorCode, Toast.LENGTH_SHORT).show()*/
+                *//*refresh_button.isEnabled = true*//*
+                *//* Toast.makeText(this@ImageViewActivity, "" + errorCode, Toast.LENGTH_SHORT).show()*//*
             }
         }).build()
 
         adLoader.loadAd(AdRequest.Builder().build())
-/*
-        videostatus_text.text = ""*/
-    }
+*//*
+        videostatus_text.text = ""*//*
+    }*/
    fun showInterstitialAd() {
         if (mInterstitialAd != null && mInterstitialAd.isLoaded) {
             mInterstitialAd.show()

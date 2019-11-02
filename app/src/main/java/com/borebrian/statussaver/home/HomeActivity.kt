@@ -121,8 +121,17 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
   //FOR CONDITIOM
 
-        var i:Int
-        var j :Int
+
+        if (mInterstitialAd != null && mInterstitialAd.isLoaded) {
+            mInterstitialAd.show()
+        }
+        else{
+            mInterstitialAd = InterstitialAd(this@HomeActivity)
+            mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712")
+            mInterstitialAd.loadAd(AdRequest.Builder().build())
+            call()
+
+        }
 
 
 
@@ -136,7 +145,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
 
-        fixedRateTimer("timer",false,1000,4000){
+        fixedRateTimer("timer",false,0,4000){
             this@HomeActivity.runOnUiThread {
 
 
@@ -145,6 +154,9 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     mInterstitialAd.loadAd(AdRequest.Builder().build());  mInterstitialAd = InterstitialAd(this@HomeActivity);
                     mInterstitialAd.adUnitId = "ca-app-pub-3940256099942544/1033173712";
                     mInterstitialAd.loadAd(AdRequest.Builder().build());
+
+
+
                     showInterstitialAd()
                     call()
 
@@ -213,7 +225,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             mInterstitialAd.show()
         }
         else{
-            mInterstitialAd = InterstitialAd(this);
+            mInterstitialAd = InterstitialAd(this@HomeActivity)
             mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712")
             mInterstitialAd.loadAd(AdRequest.Builder().build())
             call()
