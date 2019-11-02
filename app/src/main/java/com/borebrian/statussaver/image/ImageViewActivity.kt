@@ -42,9 +42,9 @@ class ImageViewActivity : AppCompatActivity() {
 
 
      //NATIVE IDS
-    val ADMOB_AD_UNIT_ID = "ca-app-pub-3940256099942544/2247696110"
+/*    val ADMOB_AD_UNIT_ID = "ca-app-pub-3940256099942544/2247696110"
     val ADMOB_APP_ID = "ca-app-pub-3940256099942544~3347511713"
-    var currentNativeAd: UnifiedNativeAd? = null
+    var currentNativeAd: UnifiedNativeAd? = null*/
 
 
 
@@ -68,7 +68,7 @@ class ImageViewActivity : AppCompatActivity() {
 
         //NATIVE ADS
         // Initialize the Mobile Ads SDK.
-        MobileAds.initialize(this, ADMOB_APP_ID)
+      /*  MobileAds.initialize(this, ADMOB_APP_ID)*/
         
 
 
@@ -78,7 +78,7 @@ class ImageViewActivity : AppCompatActivity() {
             this@ImageViewActivity.runOnUiThread {
                /* Toast.makeText(this@ImageViewActivity, "text", Toast.LENGTH_SHORT).show()*/
 
-                refreshAd()
+                /*refreshAd()*/
             }}
         //TIMER FOR INTERSTITIAL ADDS
         fixedRateTimer("timer",false,3000,15000){
@@ -249,8 +249,8 @@ class ImageViewActivity : AppCompatActivity() {
     private fun populateUnifiedNativeAdView(nativeAd: UnifiedNativeAd, adView: UnifiedNativeAdView) {
         // You must call destroy on old ads when you are done with them,
         // otherwise you will have a memory leak.
-        currentNativeAd?.destroy()
-        currentNativeAd = nativeAd
+   /*     currentNativeAd?.destroy()
+        currentNativeAd = nativeAd*/
         // Set the media view. Media content will be automatically populated in the media view once
         // adView.setNativeAd() is called.
         adView.mediaView = adView.findViewById<MediaView>(R.id.ad_media)
@@ -352,8 +352,8 @@ class ImageViewActivity : AppCompatActivity() {
             refresh_button.isEnabled = true*/
         }
     }
-    private fun refreshAd() {
-        /*refresh_button.isEnabled = false*/
+   /* private fun refreshAd() {
+        *//*refresh_button.isEnabled = false*//*
 
         val builder = AdLoader.Builder(this, ADMOB_AD_UNIT_ID)
 
@@ -366,29 +366,29 @@ class ImageViewActivity : AppCompatActivity() {
             ad_frame.addView(adView)
         }
 
-     /*   val videoOptions = VideoOptions.Builder()
+     *//*   val videoOptions = VideoOptions.Builder()
                 .setStartMuted(start_muted_checkbox.isChecked)
                 .build()
-*/
-    /*    val adOptions = NativeAdOptions.Builder()
+*//*
+    *//*    val adOptions = NativeAdOptions.Builder()
                 .setVideoOptions(videoOptions)
-                .build()*/
+                .build()*//*
 
-       /* builder.withNativeAdOptions(adOptions)*/
+       *//* builder.withNativeAdOptions(adOptions)*//*
 
         val adLoader = builder.withAdListener(object : AdListener() {
             override fun onAdFailedToLoad(errorCode: Int) {
-                /*refresh_button.isEnabled = true*/
-               /* Toast.makeText(this@ImageViewActivity, "" + errorCode, Toast.LENGTH_SHORT).show()*/
+                *//*refresh_button.isEnabled = true*//*
+               *//* Toast.makeText(this@ImageViewActivity, "" + errorCode, Toast.LENGTH_SHORT).show()*//*
             }
         }).build()
 
         adLoader.loadAd(AdRequest.Builder().build())
-/*
-        videostatus_text.text = ""*/
-    }
+*//*
+        videostatus_text.text = ""*//*
+    }*/
     override fun onDestroy() {
-        currentNativeAd?.destroy()
+       /* currentNativeAd?.destroy()*/
         super.onDestroy()
     }
     
