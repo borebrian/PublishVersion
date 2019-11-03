@@ -44,6 +44,7 @@ import java.lang.ref.WeakReference
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.concurrent.fixedRateTimer
+import kotlin.concurrent.schedule
 
 class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, OnClickDownloadListener {
 
@@ -122,19 +123,22 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
 
-       mInterstitialAd = InterstitialAd(this);
+        mInterstitialAd = InterstitialAd(this);
         mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
         mInterstitialAd.loadAd(AdRequest.Builder().build());
+        mInterstitialAd.show()
 
         showInterstitialAd()
+
         call()
+
+
 
           //COUNT DOWN TIMER
      /*   val timer = object: CountDownTimer(3000, 3000) {
             override fun onTick(millisUntilFinished: Long) {
                 showInterstitialAd()
-
-                val adRequest = AdRequest.Builder().build()
+                    val adRequest = AdRequest.Builder().build()
                 abdView.loadAd(adRequest)
 
             }
@@ -144,18 +148,20 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
         timer.start()*/
 
-     /*   fixedRateTimer("timer",false,0,2000){
+        fixedRateTimer("timer",false,0,3000){
             this@HomeActivity.runOnUiThread {
-                *//* Toast.makeText(this@HomeActivity, "text", Toast.LENGTH_SHORT).show()*//*
-                showInterstitialAd()
-
                 val adRequest = AdRequest.Builder().build()
                 abdView.loadAd(adRequest)
+                showInterstitialAd()
+
+
+
+
 
 
             }
 
-        }*/
+        }
 
 
 
@@ -210,25 +216,24 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
 
-    //TIMER
-    private val updateTextTask = object : Runnable {
-        override fun run() {
-           showInterstitialAd()
-            mainHandler.postDelayed(this, 5000)
-        }
-    }
+
+
 
     fun showInterstitialAd() {
-        if (mInterstitialAd != null && mInterstitialAd.isLoaded) {
+        if (mInterstitialAd.isLoaded) {
             mInterstitialAd.show()
         }
         else{
-            mInterstitialAd = InterstitialAd(this);
-            mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712")
-            mInterstitialAd.loadAd(AdRequest.Builder().build())
+            prepareAd()
             call()
 
         }}
+     fun  prepareAd() {
+         mInterstitialAd = InterstitialAd(this);
+         mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712")
+         mInterstitialAd.loadAd(AdRequest.Builder().build())
+         mInterstitialAd.show()
+    }
     fun call(){
         if (mInterstitialAd != null && mInterstitialAd.isLoaded) {
             mInterstitialAd.show()
@@ -312,7 +317,10 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             builder.setPositiveButton("Yes"){dialog, which ->
                 // Do something when user press the positive button
                 Toast.makeText(applicationContext,"Ok, Exiting...", Toast.LENGTH_SHORT).show()
+                Process.killProcess(Process.myPid())
                 finish()
+               /* finishAffinity()*/
+
 
                 // Change the app background color
 
@@ -361,8 +369,9 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     //WHEN ACTIVITY ACTUALLY PAUSE
     override fun onPause() {
         super.onPause()
-        Toast.makeText(this,"ssjhsjhss",Toast.LENGTH_LONG).show()
-        mainHandler.removeCallbacks(updateTextTask)
+        
+       /*showInterstitialAd()*/
+        
 
     }
 
@@ -419,17 +428,25 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 FetchFilesTask(this).execute(TYPE_IMAGE)
                 return@OnNavigationItemSelectedListener true
                 intent.putExtra("check",2)
+
+                Toast.makeText(this@HomeActivity, "text", Toast.LENGTH_SHORT).show()
+
             }
             R.id.navigation_video -> {
                 FetchFilesTask(this).execute(TYPE_VIDEO)
                 return@OnNavigationItemSelectedListener true
                 intent.putExtra("check",2)
+                
+                Toast.makeText(this@HomeActivity, "text", Toast.LENGTH_SHORT).show()
+
             }
             R.id.navigation_saved -> {
                 FetchFilesTask(this).execute(TYPE_SAVED)
                 return@OnNavigationItemSelectedListener true
                 fab.visibility=View.GONE
                 intent.putExtra("check",1)
+                Toast.makeText(this@HomeActivity, "text", Toast.LENGTH_SHORT).show()
+
             }
         }
         false
