@@ -77,11 +77,6 @@ class VideoActivity : AppCompatActivity(), Player.EventListener {
 
         setContentView(R.layout.activity_video)
 
-
-        mInterstitialAd = InterstitialAd(this);
-        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
-        mInterstitialAd.loadAd(AdRequest.Builder().build());
-
         //NATIVE ADS
         // Initialize the Mobile Ads SDK.
         MobileAds.initialize(this, ADMOB_APP_ID)
@@ -346,17 +341,20 @@ class VideoActivity : AppCompatActivity(), Player.EventListener {
 *//*
         videostatus_text.text = ""*//*
     }*/
-   fun showInterstitialAd() {
-        if (mInterstitialAd != null && mInterstitialAd.isLoaded) {
-            mInterstitialAd.show()
-        }
-        else{
-            mInterstitialAd = InterstitialAd(this);
-            mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
-            mInterstitialAd.loadAd(AdRequest.Builder().build());
-            call()
 
-        }}
+    fun showInterstitialAd() {
+        //INTERSTITIAL
+        mInterstitialAd = InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712")
+        mInterstitialAd.loadAd(AdRequest.Builder().build());
+        mInterstitialAd.setAdListener(object : AdListener() {
+            override fun onAdLoaded() {
+                // TODO Auto-generated method stub
+                super.onAdLoaded()
+
+            }
+        })
+    }
     fun call(){
         if (mInterstitialAd != null && mInterstitialAd.isLoaded) {
             mInterstitialAd.show()
@@ -455,16 +453,19 @@ class VideoActivity : AppCompatActivity(), Player.EventListener {
     override fun onDestroy() {
         super.onDestroy()
         player.release()
+        showInterstitialAd()
     }
 
     override fun onPause() {
         super.onPause()
         player.playWhenReady = false
         player.playbackState
+        showInterstitialAd()
     }
 
     override fun onResume() {
         super.onResume()
+        showInterstitialAd()
 
         player.playWhenReady = true
         player.playbackState

@@ -29,10 +29,7 @@ import com.borebrian.statussaver.utils.MyProgress
 import com.borebrian.statussaver.utils.Utils
 import com.borebrian.statussaver.utils.Utils.Companion.WHATSAPP_STATUSES_LOCATION
 import com.borebrian.statussaver.utils.Utils.Companion.WHATSAPP_STATUSES_SAVED_LOCATION
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.AdView
-import com.google.android.gms.ads.InterstitialAd
-import com.google.android.gms.ads.MobileAds
+import com.google.android.gms.ads.*
 import com.google.android.gms.ads.reward.RewardedVideoAd
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
@@ -43,8 +40,7 @@ import java.io.File
 import java.lang.ref.WeakReference
 import java.util.*
 import kotlin.collections.ArrayList
-import kotlin.concurrent.fixedRateTimer
-import kotlin.concurrent.schedule
+
 
 class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, OnClickDownloadListener {
 
@@ -117,69 +113,25 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setContentView(R.layout.activity_home)
         setSupportActionBar(toolbar)
 
-
+        val adRequest = AdRequest.Builder().build()
+        abdView.loadAd(adRequest)
 
 
 
 
 
         mInterstitialAd = InterstitialAd(this);
-        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712")
         mInterstitialAd.loadAd(AdRequest.Builder().build());
-        mInterstitialAd.show()
-
-        showInterstitialAd()
-
-        call()
-
-
-
-          //COUNT DOWN TIMER
-     /*   val timer = object: CountDownTimer(3000, 3000) {
-            override fun onTick(millisUntilFinished: Long) {
-                showInterstitialAd()
-                    val adRequest = AdRequest.Builder().build()
-                abdView.loadAd(adRequest)
-
+        mInterstitialAd.setAdListener(object: AdListener() {
+            override  fun onAdLoaded() {
+                // TODO Auto-generated method stub
+                super.onAdLoaded()
+                call()
             }
-
-            override fun onFinish() {
-
-            }
-        timer.start()*/
-
-        fixedRateTimer("timer",false,0,3000){
-            this@HomeActivity.runOnUiThread {
-                val adRequest = AdRequest.Builder().build()
-                abdView.loadAd(adRequest)
-                showInterstitialAd()
+        })
 
 
-
-
-
-
-            }
-
-        }
-
-
-
-
-    /*    MobileAds.initialize(this) {}
-        mAdView = findViewById(R.id.adView)
-        val adRequest = AdRequest.Builder().build()
-        adView.loadAd(adRequest*/
-       /* MobileAds.initialize(this, getString(R.string.admob_app_id))*/
-
-        //adView.adSize = AdSize.BANNER
-        //adView.adUnitId = AD_UNIT_ID
-
-
-
-        mInterstitialAd = InterstitialAd(this)
-        mInterstitialAd.adUnitId = getString(R.string.admob_interstitial_id)
-        mInterstitialAd.loadAd(AdRequest.Builder().build())
 
 
 
@@ -220,14 +172,17 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
     fun showInterstitialAd() {
-        if (mInterstitialAd.isLoaded) {
-            mInterstitialAd.show()
+        mInterstitialAd = InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712")
+        mInterstitialAd.loadAd(AdRequest.Builder().build());
+        mInterstitialAd.setAdListener(object: AdListener() {
+            override  fun onAdLoaded() {
+                // TODO Auto-generated method stub
+                super.onAdLoaded()
+                call()
+            }
+        })
         }
-        else{
-            prepareAd()
-            call()
-
-        }}
      fun  prepareAd() {
          mInterstitialAd = InterstitialAd(this);
          mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712")
@@ -235,11 +190,10 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
          mInterstitialAd.show()
     }
     fun call(){
-        if (mInterstitialAd != null && mInterstitialAd.isLoaded) {
+        if (mInterstitialAd.isLoaded())
+        {
             mInterstitialAd.show()
-
         }
-
 
     }
 
@@ -374,6 +328,12 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         
 
     }
+
+    override fun onResume() {
+        super.onResume()
+
+    }
+
 
 
 

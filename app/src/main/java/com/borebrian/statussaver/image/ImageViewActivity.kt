@@ -55,11 +55,11 @@ class ImageViewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_image_view)
         setSupportActionBar(toolbar)
-        mInterstitialAd = InterstitialAd(this)
-        mInterstitialAd.adUnitId = "ca-app-pub-3940256099942544/6300978111";
 
-        
-        mInterstitialAd.loadAd(AdRequest.Builder().build());
+
+
+        //INTERSTITIAL
+        showInterstitialAd()
 
          //ADVIEW   BANNER
         MobileAds.initialize(this, "ca-app-pub-3940256099942544/1033173712")
@@ -174,7 +174,7 @@ class ImageViewActivity : AppCompatActivity() {
 
         }
         fab4.setOnClickListener(){
-            showAdd()
+
             val fdelete =(imageFile)
             if (fdelete.exists())
             {
@@ -216,7 +216,7 @@ class ImageViewActivity : AppCompatActivity() {
                 fab.setImageDrawable(resources.getDrawable(R.drawable.ic_close_black_24dp))
                 var status2=status
                 status=status2+1
-                mInterstitialAd.show()
+                showInterstitialAd()
             }
             else if(status==0 && imageFile.toString().contains("Statuses")){
                 sharestatus.visibility=View.VISIBLE;
@@ -226,7 +226,7 @@ class ImageViewActivity : AppCompatActivity() {
                 fab.setImageDrawable(resources.getDrawable(R.drawable.ic_close_black_24dp))
                 var status2=status
                 status=status2+1
-                mInterstitialAd.show()
+                showInterstitialAd()
 
             }
             else{
@@ -237,7 +237,7 @@ class ImageViewActivity : AppCompatActivity() {
                 fab.setImageDrawable(resources.getDrawable(R.drawable.ic_add_black_24dp))
                 var status2=status
                 status=0
-                mInterstitialAd.show()
+                showInterstitialAd()
             }
 
         }
@@ -393,43 +393,31 @@ class ImageViewActivity : AppCompatActivity() {
     
 
 
-    fun showAdd(){
-        /* if (mInterstitialAd.isLoaded()) {*/
-        mInterstitialAd = InterstitialAd(this);
-        mInterstitialAd.adUnitId = "ca-app-pub-3940256099942544/6300978111";
-        mInterstitialAd.loadAd(AdRequest.Builder().build());
-        mInterstitialAd.show()
 
-        /* }
-         else{*/
-        /*  Toast.makeText(this,"Not loaded",Toast.LENGTH_LONG).show()
-          mInterstitialAd = InterstitialAd(this);
-          mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/6300978111");
-          mInterstitialAd.loadAd(AdRequest.Builder().build());
-          mInterstitialAd.show()*/
 
-    }
 
 
     fun showInterstitialAd() {
-        if (mInterstitialAd != null && mInterstitialAd.isLoaded) {
-            mInterstitialAd.show()
-        }
-    else{
-            mInterstitialAd = InterstitialAd(this);
-            mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/6300978111");
-            mInterstitialAd.loadAd(AdRequest.Builder().build());
-            call()
+        //INTERSTITIAL
+        mInterstitialAd = InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712")
+        mInterstitialAd.loadAd(AdRequest.Builder().build());
+        mInterstitialAd.setAdListener(object : AdListener() {
+            override fun onAdLoaded() {
+                // TODO Auto-generated method stub
+                super.onAdLoaded()
 
-        }}
-    fun call(){
+            }
+        })
+    }
+    /*fun call(){
         if (mInterstitialAd != null && mInterstitialAd.isLoaded) {
             mInterstitialAd.show()
             
         }
 
 
-    }
+    }  */
 
 
 
