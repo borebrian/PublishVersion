@@ -42,9 +42,9 @@ class ImageViewActivity : AppCompatActivity() {
 
 
      //NATIVE IDS
-/*    val ADMOB_AD_UNIT_ID = "ca-app-pub-3940256099942544/2247696110"
+    val ADMOB_AD_UNIT_ID = "ca-app-pub-3940256099942544/2247696110"
     val ADMOB_APP_ID = "ca-app-pub-3940256099942544~3347511713"
-    var currentNativeAd: UnifiedNativeAd? = null*/
+    var currentNativeAd: UnifiedNativeAd? = null
 
 
 
@@ -68,20 +68,19 @@ class ImageViewActivity : AppCompatActivity() {
 
         //NATIVE ADS
         // Initialize the Mobile Ads SDK.
-      /*  MobileAds.initialize(this, ADMOB_APP_ID)*/
+        MobileAds.initialize(this, ADMOB_APP_ID)
         
-
 
       /*  refresh_button.setOnClickListener { refreshAd() }
 */       //TIMER FOR NATIVE ADDS
-        fixedRateTimer("timer",false,5000,10000){
+     /*   fixedRateTimer("timer",false,5000,10000){
             this@ImageViewActivity.runOnUiThread {
-               /* Toast.makeText(this@ImageViewActivity, "text", Toast.LENGTH_SHORT).show()*/
+               *//* Toast.makeText(this@ImageViewActivity, "text", Toast.LENGTH_SHORT).show()*//*
 
-                /*refreshAd()*/
-            }}
+                *//*refreshAd()*//*
+            }}*/
         //TIMER FOR INTERSTITIAL ADDS
-        fixedRateTimer("timer",false,3000,15000){
+      /*  fixedRateTimer("timer",false,3000,15000){
             this@ImageViewActivity.runOnUiThread {
                 if (mInterstitialAd != null && mInterstitialAd.isLoaded) {
                     mInterstitialAd.show()
@@ -94,7 +93,7 @@ class ImageViewActivity : AppCompatActivity() {
 
                 }
 
-            }}
+            }}*/
 
 
         var status=0

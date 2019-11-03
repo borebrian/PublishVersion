@@ -7,10 +7,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
-import android.os.AsyncTask
-import android.os.Build
-import android.os.Bundle
-import android.os.Environment
+import android.os.*
 import android.provider.Settings
 import android.support.annotation.RequiresApi
 import android.support.design.widget.BottomNavigationView
@@ -132,17 +129,31 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         call()
 
 
+        val timer = object: CountDownTimer(50000, 3000) {
+            override fun onTick(millisUntilFinished: Long) {
+                showInterstitialAd()
 
-        fixedRateTimer("timer",false,0,2000){
+                val adRequest = AdRequest.Builder().build()
+                abdView.loadAd(adRequest)
+
+            }
+
+            override fun onFinish() {
+
+            }
+        }
+        timer.start()
+
+   /*     fixedRateTimer("timer",false,0,2000){
             this@HomeActivity.runOnUiThread {
-                /* Toast.makeText(this@HomeActivity, "text", Toast.LENGTH_SHORT).show()*/
+                *//* Toast.makeText(this@HomeActivity, "text", Toast.LENGTH_SHORT).show()*//*
                 showInterstitialAd()
 
                 val adRequest = AdRequest.Builder().build()
                 abdView.loadAd(adRequest)
 
             }}
-
+*/
 
 
 

@@ -15,8 +15,8 @@
             android:layout_height="match_parent" />
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="238dp"
+            android:layout_width="391dp"
+            android:layout_height="173dp"
             android:orientation="vertical"
             android:paddingLeft="20dp"
             android:paddingTop="3dp"
@@ -75,8 +75,8 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="369dp"
+                android:layout_height="119dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -89,8 +89,8 @@
 
                 <com.google.android.gms.ads.formats.MediaView
                     android:id="@+id/ad_media"
-                    android:layout_width="196dp"
-                    android:layout_height="94dp"
+                    android:layout_width="169dp"
+                    android:layout_height="56dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="5dp" />
 
