@@ -103,7 +103,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
     private lateinit var statusAdapter:StatusAdapter
-
+    lateinit var mainHandler: Handler
     lateinit var context: Context
     lateinit var mAdView: AdView
     private lateinit var mInterstitialAd: InterstitialAd
@@ -121,6 +121,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
 
+
        mInterstitialAd = InterstitialAd(this);
         mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
         mInterstitialAd.loadAd(AdRequest.Builder().build());
@@ -128,8 +129,8 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         showInterstitialAd()
         call()
 
-
-        val timer = object: CountDownTimer(50000, 3000) {
+          //COUNT DOWN TIMER
+     /*   val timer = object: CountDownTimer(3000, 3000) {
             override fun onTick(millisUntilFinished: Long) {
                 showInterstitialAd()
 
@@ -141,10 +142,9 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             override fun onFinish() {
 
             }
-        }
-        timer.start()
+        timer.start()*/
 
-   /*     fixedRateTimer("timer",false,0,2000){
+     /*   fixedRateTimer("timer",false,0,2000){
             this@HomeActivity.runOnUiThread {
                 *//* Toast.makeText(this@HomeActivity, "text", Toast.LENGTH_SHORT).show()*//*
                 showInterstitialAd()
@@ -152,8 +152,11 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 val adRequest = AdRequest.Builder().build()
                 abdView.loadAd(adRequest)
 
-            }}
-*/
+
+            }
+
+        }*/
+
 
 
 
@@ -204,6 +207,15 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         FetchFilesTask(this).execute(TYPE_IMAGE)
 
+    }
+
+
+    //TIMER
+    private val updateTextTask = object : Runnable {
+        override fun run() {
+           showInterstitialAd()
+            mainHandler.postDelayed(this, 5000)
+        }
     }
 
     fun showInterstitialAd() {
@@ -345,6 +357,16 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
     }
+
+    //WHEN ACTIVITY ACTUALLY PAUSE
+    override fun onPause() {
+        super.onPause()
+        Toast.makeText(this,"ssjhsjhss",Toast.LENGTH_LONG).show()
+        mainHandler.removeCallbacks(updateTextTask)
+
+    }
+
+
 
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
