@@ -351,6 +351,7 @@ class VideoActivity : AppCompatActivity(), Player.EventListener {
             override fun onAdLoaded() {
                 // TODO Auto-generated method stub
                 super.onAdLoaded()
+                call()
 
             }
         })
@@ -453,19 +454,19 @@ class VideoActivity : AppCompatActivity(), Player.EventListener {
     override fun onDestroy() {
         super.onDestroy()
         player.release()
-        showInterstitialAd()
+
     }
 
     override fun onPause() {
         super.onPause()
         player.playWhenReady = false
         player.playbackState
-        showInterstitialAd()
+
     }
 
     override fun onResume() {
         super.onResume()
-        showInterstitialAd()
+
 
         player.playWhenReady = true
         player.playbackState

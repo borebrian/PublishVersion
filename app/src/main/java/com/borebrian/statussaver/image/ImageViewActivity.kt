@@ -406,9 +406,17 @@ class ImageViewActivity : AppCompatActivity() {
             override fun onAdLoaded() {
                 // TODO Auto-generated method stub
                 super.onAdLoaded()
+                call()
 
             }
         })
+    }
+    fun call(){
+        if (mInterstitialAd.isLoaded())
+        {
+            mInterstitialAd.show()
+        }
+
     }
     /*fun call(){
         if (mInterstitialAd != null && mInterstitialAd.isLoaded) {
