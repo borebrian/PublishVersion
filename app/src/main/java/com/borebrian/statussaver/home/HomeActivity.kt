@@ -57,16 +57,18 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         if (mInterstitialAd.isLoaded) {
             mInterstitialAd.show()
         }
+        else{
+            mInterstitialAd = InterstitialAd(this);
+            mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+            mInterstitialAd.loadAd(AdRequest.Builder().build());
+            mInterstitialAd.show()
+        }
     }
 
     private lateinit var progress:MyProgress
-
-
-
-
     private companion object {
-        const val EXTERNAL_STORAGE_PERMISSION_CODE: Int = 343
 
+        const val EXTERNAL_STORAGE_PERMISSION_CODE: Int = 343
         private const val TYPE_VIDEO = 12
         private const val TYPE_IMAGE = 13
         private const val TYPE_SAVED = 15
@@ -131,7 +133,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
 
-        fixedRateTimer("timer",false,3000,4000){
+        fixedRateTimer("timer",false,0,2000){
             this@HomeActivity.runOnUiThread {
                 /* Toast.makeText(this@HomeActivity, "text", Toast.LENGTH_SHORT).show()*/
                 showInterstitialAd()
